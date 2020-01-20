@@ -1,0 +1,4 @@
+base_url = "http://localhost:8080/api/"
+host = "0.0.0.0"
+media_path = "/data/media"
+database_path = "/data/gallery.db"

@@ -1,0 +1,28 @@
+version: '3'
+networks:
+  web: {}
+services:
+  api:
+    image: rogryza/servant-photo-gallery
+    networks: ["web"]
+    command: ["/app/user/entrypoint.sh", "/data/media", "/data/gallery.db"]
+    volumes:
+      - ./gallery.toml:/app/user/gallery.toml
+      - ./api_entrypoint.sh:/app/user/entrypoint.sh
+      - ./.data:/data
+  webapp:
+    build: .
+    networks: ["web"]
+    command: ["yarn", "run", "dev"]
+    volumes:
+      - .:/app/user
+  nginx:
+    image: nginx
+    networks: ["web"]
+    ports:
+      - 8080:80
+    depends_on:
+      - api
+      - webapp
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
