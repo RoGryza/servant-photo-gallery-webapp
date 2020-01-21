@@ -1,10 +1,12 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import replace from '@rollup/plugin-replace';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
+const api_base_url = process.env.API_BASE_URL || '/api';
 
 export default {
   input: 'src/main.js',
@@ -15,6 +17,11 @@ export default {
     file: 'public/build/bundle.js'
   },
   plugins: [
+    replace({
+      API_BASE_URL: `"${api_base_url}"`,
+      include: "*/main.js",
+    }),
+
     svelte({
       // enable run-time checks when not in production
       dev: !production,

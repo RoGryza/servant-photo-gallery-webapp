@@ -6,7 +6,8 @@
  import CreatePost from './CreatePost.svelte';
  import Router, { navigateTo } from './Router.svelte';
 
- setContext('service', new APIService(API_BASE_URL))
+ export let api_base_url;
+ setContext('service', new APIService(api_base_url))
 </script>
 
 <Router
