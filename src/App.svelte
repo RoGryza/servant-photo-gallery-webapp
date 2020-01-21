@@ -13,10 +13,9 @@
 <Router
   defaultRoute="/login"
   routes={{
-           '/': () => Home,
-           '/login': () => Login,
-           '/posts/new': () => CreatePost,
+         '/': () => Home,
+         '/login': () => Login,
+         '/posts/new': () => CreatePost,
          }}/>
-
 <style>
 </style>

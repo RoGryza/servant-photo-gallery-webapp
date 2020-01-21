@@ -14,7 +14,6 @@ export default class APIService {
 
     this.token = resp.access_token;
     const decoded = parseJwt(this.token);
-    console.log(decoded);
     this.isAdmin = !!decoded.admin;
     return resp;
   }

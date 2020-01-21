@@ -1,6 +1,7 @@
 <script>
  import { createEventDispatcher } from 'svelte';
  import Error from './Error.svelte';
+ import Spinner from './Spinner.svelte';
 
  const dispatch = createEventDispatcher();
 
@@ -50,10 +51,10 @@
   <div class="grid-item">
     {#if fetchPostsPromise}
       {#await fetchPostsPromise}
-        Loading...
+        <Spinner/>
       {:then _}
         {#if hasMore}
-          Loading...
+          <Spinner/>
         {:else}
           No more posts
         {/if}
