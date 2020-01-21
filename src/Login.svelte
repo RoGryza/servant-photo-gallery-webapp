@@ -31,7 +31,7 @@
     <label for="username">Username</label>
     <input id="username" required bind:value={username} {disabled}/>
     <label for="password">Password</label>
-    <input id="password" required bind:value={password} {disabled}/>
+    <input id="password" type="password" required bind:value={password} {disabled}/>
     <br/>
     <input type="submit" value="Login" {disabled}/>
   </form>
